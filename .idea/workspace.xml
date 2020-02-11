@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58a7b40f-87e5-4138-a693-9ef5ffb20ec7" name="Default Changelist" comment="" />
+    <list default="true" id="58a7b40f-87e5-4138-a693-9ef5ffb20ec7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/iden_compare.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/acc.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/acc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/loss.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/iden_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/iden_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -14,7 +38,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1WETtjZoSaEZOqWYVI848nZuNfL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -22,6 +50,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -211,6 +240,22 @@
       <workItem from="1580131444136" duration="1040000" />
       <workItem from="1580172001535" duration="7528000" />
       <workItem from="1580262496662" duration="786000" />
+      <workItem from="1580264483522" duration="11471000" />
+      <workItem from="1580346390622" duration="11722000" />
+      <workItem from="1580434668365" duration="12709000" />
+      <workItem from="1580520465313" duration="8946000" />
+      <workItem from="1580606716108" duration="6884000" />
+      <workItem from="1580697934551" duration="5530000" />
+      <workItem from="1580781141360" duration="4518000" />
+      <workItem from="1580866109509" duration="4374000" />
+      <workItem from="1580951694622" duration="3869000" />
+      <workItem from="1581038954334" duration="3191000" />
+      <workItem from="1581126213864" duration="5756000" />
+      <workItem from="1581165748784" duration="147000" />
+      <workItem from="1581166157829" duration="33000" />
+      <workItem from="1581214257863" duration="4722000" />
+      <workItem from="1581299210664" duration="3787000" />
+      <workItem from="1581385731627" duration="4277000" />
     </task>
     <servers />
   </component>
@@ -222,46 +267,46 @@
       <screen x="63" y="0" width="1537" height="900" />
     </state>
     <state x="285" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog/63.0.1537.900@63.0.1537.900" timestamp="1579074261732" />
-    <state width="1494" height="742" key="GridCell.Tab.0.bottom" timestamp="1580263308098">
+    <state width="1494" height="393" key="GridCell.Tab.0.bottom" timestamp="1581422630752">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
-    <state width="1494" height="742" key="GridCell.Tab.0.bottom/63.0.1537.900@63.0.1537.900" timestamp="1580263308098" />
-    <state width="1494" height="742" key="GridCell.Tab.0.center" timestamp="1580263308098">
+    <state width="1494" height="393" key="GridCell.Tab.0.bottom/63.0.1537.900@63.0.1537.900" timestamp="1581422630752" />
+    <state width="1494" height="393" key="GridCell.Tab.0.center" timestamp="1581422630752">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
-    <state width="1494" height="742" key="GridCell.Tab.0.center/63.0.1537.900@63.0.1537.900" timestamp="1580263308098" />
-    <state width="1494" height="742" key="GridCell.Tab.0.left" timestamp="1580263308098">
+    <state width="1494" height="393" key="GridCell.Tab.0.center/63.0.1537.900@63.0.1537.900" timestamp="1581422630752" />
+    <state width="1494" height="393" key="GridCell.Tab.0.left" timestamp="1581422630752">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
-    <state width="1494" height="742" key="GridCell.Tab.0.left/63.0.1537.900@63.0.1537.900" timestamp="1580263308098" />
-    <state width="1494" height="742" key="GridCell.Tab.0.right" timestamp="1580263308098">
+    <state width="1494" height="393" key="GridCell.Tab.0.left/63.0.1537.900@63.0.1537.900" timestamp="1581422630752" />
+    <state width="1494" height="393" key="GridCell.Tab.0.right" timestamp="1581422630752">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
-    <state width="1494" height="742" key="GridCell.Tab.0.right/63.0.1537.900@63.0.1537.900" timestamp="1580263308098" />
-    <state width="1494" height="292" key="GridCell.Tab.1.bottom" timestamp="1580047935680">
+    <state width="1494" height="393" key="GridCell.Tab.0.right/63.0.1537.900@63.0.1537.900" timestamp="1581422630752" />
+    <state width="1494" height="292" key="GridCell.Tab.1.bottom" timestamp="1580569167270">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
-    <state width="1494" height="292" key="GridCell.Tab.1.bottom/63.0.1537.900@63.0.1537.900" timestamp="1580047935680" />
-    <state width="1494" height="292" key="GridCell.Tab.1.center" timestamp="1580047935680">
+    <state width="1494" height="292" key="GridCell.Tab.1.bottom/63.0.1537.900@63.0.1537.900" timestamp="1580569167270" />
+    <state width="1494" height="292" key="GridCell.Tab.1.center" timestamp="1580569167270">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
-    <state width="1494" height="292" key="GridCell.Tab.1.center/63.0.1537.900@63.0.1537.900" timestamp="1580047935680" />
-    <state width="1494" height="292" key="GridCell.Tab.1.left" timestamp="1580047935680">
+    <state width="1494" height="292" key="GridCell.Tab.1.center/63.0.1537.900@63.0.1537.900" timestamp="1580569167270" />
+    <state width="1494" height="292" key="GridCell.Tab.1.left" timestamp="1580569167270">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
-    <state width="1494" height="292" key="GridCell.Tab.1.left/63.0.1537.900@63.0.1537.900" timestamp="1580047935680" />
-    <state width="1494" height="292" key="GridCell.Tab.1.right" timestamp="1580047935680">
+    <state width="1494" height="292" key="GridCell.Tab.1.left/63.0.1537.900@63.0.1537.900" timestamp="1580569167270" />
+    <state width="1494" height="292" key="GridCell.Tab.1.right" timestamp="1580569167270">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
-    <state width="1494" height="292" key="GridCell.Tab.1.right/63.0.1537.900@63.0.1537.900" timestamp="1580047935680" />
+    <state width="1494" height="292" key="GridCell.Tab.1.right/63.0.1537.900@63.0.1537.900" timestamp="1580569167270" />
     <state x="334" y="95" key="SettingsEditor" timestamp="1579010774820">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
     <state x="334" y="95" key="SettingsEditor/63.0.1537.900@63.0.1537.900" timestamp="1579010774820" />
-    <state x="524" y="277" key="com.intellij.ide.util.TipDialog" timestamp="1580262820585">
+    <state x="524" y="277" key="com.intellij.ide.util.TipDialog" timestamp="1581385846211">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
-    <state x="524" y="277" key="com.intellij.ide.util.TipDialog/63.0.1537.900@63.0.1537.900" timestamp="1580262820585" />
+    <state x="524" y="277" key="com.intellij.ide.util.TipDialog/63.0.1537.900@63.0.1537.900" timestamp="1581385846211" />
     <state x="553" y="367" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1580097390186">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
@@ -269,10 +314,10 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/mfcc_cnn$tools.coverage" NAME="tools Coverage Results" MODIFIED="1579261354012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/mfcc_cnn$identification.coverage" NAME="identification Coverage Results" MODIFIED="1580214761032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
+    <SUITE FILE_PATH="coverage/mfcc_cnn$identification.coverage" NAME="identification Coverage Results" MODIFIED="1581415069483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
     <SUITE FILE_PATH="coverage/mfcc_cnn$old_models.coverage" NAME="old_models Coverage Results" MODIFIED="1579678830339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/mfcc_cnn$model.coverage" NAME="model Coverage Results" MODIFIED="1580263101671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/mfcc_cnn$model.coverage" NAME="model Coverage Results" MODIFIED="1581415261352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/mfcc_cnn$test.coverage" NAME="test Coverage Results" MODIFIED="1580019537836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/mfcc_cnn$iden_train.coverage" NAME="iden_train Coverage Results" MODIFIED="1580200421152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
+    <SUITE FILE_PATH="coverage/mfcc_cnn$iden_train.coverage" NAME="iden_train Coverage Results" MODIFIED="1581385930387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
   </component>
 </project>

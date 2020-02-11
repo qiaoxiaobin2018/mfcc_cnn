@@ -103,18 +103,11 @@ def get_mfcc(filepath):
     # d_mfcc_feat_2 = delta(d_mfcc_feat_1, 2)
 
     features = mfcc_feat # np.stack((mfcc_feat,d_mfcc_feat_1),axis=2)
-
-    length = features.shape[0]
-    reserve_length = length - (length%100)
-    rstart = int((length - reserve_length) / 2)
-
-    if c.MODE == "train":
-        features = features[0:300, :]
-    elif c.MODE == "test":
-        features = features[0:reserve_length, :]
+    features = features[0:300, :]
     features_norm = normalize_frames(features.T)
+    features = features_norm.T
 
-    return features_norm
+    return features
 
 
 def get_mfcc_1(filepath):

@@ -5,7 +5,7 @@ import keras
 import tensorflow as tf
 import keras.backend as K
 from keras import layers
-from keras.models import Model
+from keras.models import Model,Sequential
 from keras.regularizers import l2
 from keras.layers.merge import concatenate
 from keras.layers import Activation, Conv1D, Conv2D, Input, Lambda,Dropout,LSTM
@@ -24,11 +24,11 @@ def trans(x):
 
 
 def conNet(input_shape,weight_decay,pool):
-    # ===============================================
-    # train: 0 ~ 30  0.001
-    #        35 ~ 85  0.0001
-    #        90 ~ 115  0.00006(2)
-    # ===============================================
+    '''
+    train: 0 ~ 30  0.001
+           35 ~ 85  0.0001
+           90 ~ 115  0.00006(2)
+    '''
     # ===============================================
     #            input layer
     # ===============================================
@@ -72,35 +72,19 @@ def conNet(input_shape,weight_decay,pool):
                 kernel_regularizer=l2(weight_decay),
                 padding='same',
                 name='conv3_1')(x2)
-    x3 = Conv2D(124, (3, 3),
+    x3 = Conv2D(128, (3, 3),
                 kernel_initializer='orthogonal',
                 use_bias=False, trainable=True,
                 kernel_regularizer=l2(weight_decay),
                 padding='same',
                 strides=(2, 1),
-                name='conv3_2')(x3)
+                name='conv3_3')(x3)
     x3 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn3', trainable=True)(x3, training=False)
     x3 = Activation('relu', name='relu3')(x3)
     if pool == "max":
         x3 = MaxPooling2D((2,2), strides=(2,2), padding="same", name="mpool3")(x3)
     elif pool == "avg":
         x3 = AveragePooling2D((2,2), strides=(2,2), padding="same", name="avgpool3")(x3)
-    # ===============================================
-    #            Convolution Block 4
-    # ===============================================
-    # x4 = Conv2D(128, (1,3),
-    #             kernel_initializer='orthogonal',
-    #             use_bias=False, trainable=True,
-    #             kernel_regularizer=l2(weight_decay),
-    #             padding='same',
-    #             strides=(1,2),
-    #             name='conv4')(x3)
-    # x4 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn4', trainable=True)(x4, training=False)
-    # x4 = Activation('relu', name='relu4')(x4)
-    # if pool == "max":
-    #     x4 = MaxPooling2D((1,2), strides=(1,2), padding="same", name="mpool4")(x4)
-    # elif pool == "avg":
-    #     x4 = AveragePooling2D((1, 2), strides=(1, 2), padding="same", name="avgpool4")(x4)
     # ===============================================
     #            GlobalAveragePooling
     # ===============================================
@@ -138,7 +122,7 @@ def conNet(input_shape,weight_decay,pool):
 '''
 
 
-def test():
+def test_for_cnn():
     input_shape = (13,300,3)
     model = conNet(input_shape,c.WEIGHT_DECAY,c.POOL)
 
@@ -152,4 +136,4 @@ def test():
 
 
 if __name__ == '__main__':
-    test()
+    test_for_cnn()
