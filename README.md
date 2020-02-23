@@ -9,15 +9,15 @@ mfcc_cnn
 		cudnn 7.0.5
 
 ### 训练：
-		set train params in constants.py:
-		    CONTINUE_TRAINING --> 0
-		    LR = 0.001
-		    EPOCHS = 30
-		    BATCH_SIZE = 32
-		    N_CLASS = 128
-		mode --> "train"
-		run iden_train.py
-		model saved in IDEN_MODEL_FA_PATH
+		* set train params in constants.py:
+			CONTINUE_TRAINING --> 0
+			LR = 0.001
+			EPOCHS = 30
+			BATCH_SIZE = 32
+			N_CLASS = 128
+		* mode --> "train"
+		* run iden_train.py
+		* model saved in IDEN_MODEL_FA_PATH
 
 ### 测试：
 		mode --> "test"
