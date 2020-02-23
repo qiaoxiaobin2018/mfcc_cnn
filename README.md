@@ -2,7 +2,7 @@ mfcc_cnn
 =====
 
 ### 环境：
-		Python 3.6
+		Anaconda 3-5.1.0 (Python 3.6)
 		pip 9.0.1
 		tensorflow-gpu 1.5.0
 		keras 2.1.4
