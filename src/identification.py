@@ -2,9 +2,10 @@ import os
 import time
 import numpy as np
 import constants as c
+import keras.backend as K
 import tensorflow as tf
 from keras.models import load_model
-from tools import get_mfcc,get_mfcc_1
+from tools import get_mfcc, get_mfcc_1, get_fbank
 from model import conNet
 
 '''
@@ -54,4 +55,4 @@ def iden(testfile,fa_data_dir,iden_model,mode):
 if c.MODE == "train":
     print("must be test mode!")
     exit(0)
-iden(c.IDEN_TEST_FILE,c.FA_DIR,c.IDEN_MODEL_LOAD_PATH,c.MODE)
+iden(c.IDEN_TEST_FILE,c.TEST_FA_DIR,c.IDEN_MODEL_LOAD_PATH,c.MODE)

@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from python_speech_features import mfcc
 from python_speech_features import delta
-from python_speech_features import fbank
+from python_speech_features import logfbank
 
 '''
 读入训练文件列表 
@@ -19,10 +19,10 @@ path：训练文件列表
 '''
 
 
-def get_voxceleb1_datalist(FA_DIR, path):
+def get_voxceleb1_datalist(TRAIN_FA_DIR, path):
     with open(path) as f:
         strings = f.readlines()
-        audiolist = np.array([os.path.join(FA_DIR, string.split(",")[0]) for string in strings])
+        audiolist = np.array([os.path.join(TRAIN_FA_DIR, string.split(",")[0]) for string in strings])
         labellist = np.array([int(string.split(",")[1]) for string in strings])
         f.close()
         audiolist = audiolist.flatten()
@@ -67,13 +67,12 @@ class DataGenerator(keras.utils.Sequence):
         if self.shuffle:
             np.random.shuffle(self.indexes)
 
-    def _gene_Data(self, list_IDs_temp, indexes):
+    def _gene_Data(self, list_IDs_temp, indexes, b_data=None):
         '得到 MFCC 特征向量数组和类标签，以输入模型进行训练'
         b_data = np.empty((self.batch_size,) + self.dim)
         b_labels = np.empty((self.batch_size,), dtype=int)
-
         for i, ID in enumerate(list_IDs_temp):
-            b_data[i, :, :, :] = get_mfcc_1(ID)
+            b_data[i, :, :, :] = get_mfcc_2(ID)
             b_labels[i] = self.labels[indexes[i]]  # 0~n-1
             # b_labels[i] = self.labels[indexes[i]] - 1 # 1~n
 
@@ -136,6 +135,15 @@ def get_mfcc_1(filepath):
     return features
 
 
+def get_mfcc_2(filepath):
+    mfccc = np.load(filepath)
+    return mfccc
+
+
+def get_fbank(filepath):
+    return ""
+
+
 '''绘制训练损失图像'''
 
 
@@ -180,6 +188,6 @@ def draw_acc_img(history_dict,save_path):
 
 
 if __name__ == '__main__':
-    mfcc = get_mfcc_1("F:/vox_data/vox1_dev_wav/wav/id10001/1zcIwhmdeo4/00001.wav")
+    mfcc = get_fbank("F:/vox_data/vox1_dev_wav/wav/id10001/1zcIwhmdeo4/00001.wav")
     print(mfcc.shape)
     # print(mfcc)

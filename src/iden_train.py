@@ -11,7 +11,7 @@ from model import conNet
 
 
 def train_vggvox_model(model_load_path, model_save_path,continue_training, save_model):
-    audiolist, labellist = tools.get_voxceleb1_datalist(c.FA_DIR, c.IDEN_TRAIN_LIST_FILE)
+    audiolist, labellist = tools.get_voxceleb1_datalist(c.TRAIN_FA_DIR, c.IDEN_TRAIN_LIST_FILE)
     train_gene = tools.DataGenerator(audiolist, labellist, c.DIM, c.MAX_SEC, c.BUCKET_STEP, c.FRAME_STEP, c.BATCH_SIZE,
                                      c.N_CLASS)
     if continue_training == 1:
@@ -27,7 +27,7 @@ def train_vggvox_model(model_load_path, model_save_path,continue_training, save_
         model.compile(optimizer=optimizers.Adam(lr=c.LR,beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0),
                       loss="categorical_crossentropy",  # 使用分类交叉熵作为损失函数
                       metrics=['acc'])  # 使用精度作为指标
-    callbacks = [keras.callbacks.ModelCheckpoint(os.path.join(c.IDEN_MODEL_FA_PATH,'iden_model_64_{epoch:02d}_{loss:.3f}_{acc:.3f}_conNet.h5'),
+    callbacks = [keras.callbacks.ModelCheckpoint(os.path.join(c.IDEN_MODEL_FA_PATH,'iden_model_128_{epoch:02d}_{loss:.3f}_{acc:.3f}_conNet_add50.h5'),
                                                  monitor='loss',
                                                  mode='min',
                                                  save_best_only=True,
