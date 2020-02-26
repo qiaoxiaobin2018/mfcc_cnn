@@ -32,10 +32,10 @@ model compile setting
 '''
 
 
-CONTINUE_TRAINING = 1
+CONTINUE_TRAINING = 0
 SAVE = 1
-LR = 0.00006
-EPOCHS = 40
+LR = 0.001
+EPOCHS = 20
 BATCH_SIZE = 32
 N_CLASS = 128
 
@@ -49,11 +49,11 @@ MODE = "train"  # train or test
 
 
 # train
-IDEN_TRAIN_LIST_FILE = "a_iden/train_for_iden_npy.txt"
+IDEN_TRAIN_LIST_FILE = "a_iden/train_128_mfcc_npy.txt"
 IDEN_MODEL_FA_PATH = "F:/models/iden/m_128/"
 IDEN_MODEL_PATH = "F:/models/iden/iden_model_test.h5" # iden_model_test.h5
 
 # test
-IDEN_TEST_FILE = "a_iden/test_for_iden.txt"
-IDEN_MODEL_LOAD_PATH = "F:/models/iden/m_128/iden_model_128_20_0.140_1.000_conNet_add30.h5"
+IDEN_TEST_FILE = "a_iden/test_128.txt"
+IDEN_MODEL_LOAD_PATH = "F:/models/iden/m_128/iden_model_128_30_0.086_1.000_conNet_add20.h5"
 

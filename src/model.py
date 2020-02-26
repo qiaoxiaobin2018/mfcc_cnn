@@ -40,7 +40,7 @@ def conNet(input_shape,weight_decay,pool):
                 use_bias=False, trainable=True,
                 kernel_regularizer=l2(weight_decay),
                 padding='same',
-                name='conv1_1')(inputs)
+                name='conv1')(inputs)
     x1 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn1', trainable=True)(x1, training=False)
     x1 = Activation('relu', name='relu1')(x1)
     if pool == "max":
@@ -63,9 +63,9 @@ def conNet(input_shape,weight_decay,pool):
     elif pool == "avg":
         x2 = AveragePooling2D((2,2), strides=(2,2), padding="same", name="avgpool2")(x2)
     # ===============================================
-    #            Convolution Block 3
+    #            Convolution Block 4
     # ===============================================
-    x3 = Conv2D(256, (3, 3),
+    x3 = Conv2D(196, (3, 3),
                 kernel_initializer='orthogonal',
                 use_bias=False, trainable=True,
                 kernel_regularizer=l2(weight_decay),
