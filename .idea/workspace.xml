@@ -2,20 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58a7b40f-87e5-4138-a693-9ef5ffb20ec7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/a_iden/train_64_mfcc_npy.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/noteBook/CNN.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/noteBook/input_features.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/new_identification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/mod.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/mfcc_cnn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mfcc_cnn.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/a_iden/test_for_iden.txt" beforeDir="false" afterPath="$PROJECT_DIR$/a_iden/test_128.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/a_iden/test_tmp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/a_iden/test_64.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/a_iden/train_for_iden_npy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/a_iden/train_128_mfcc_npy.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_iden/test_128.txt" beforeDir="false" afterPath="$PROJECT_DIR$/a_iden/test_128.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_iden/test_64.txt" beforeDir="false" afterPath="$PROJECT_DIR$/a_iden/test_64.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/acc.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/acc.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/loss.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/loss.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/noteBook/CNN.txt" beforeDir="false" afterPath="$PROJECT_DIR$/noteBook/CNN.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/iden_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/iden_train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/old_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/old_models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +67,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LetsEat-master" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -78,29 +78,7 @@
       <recent name="D:\Python_projects\mfcc_cnn\a_iden" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.model">
-    <configuration name="conNet_with_shortCut" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="mfcc_cnn" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Python_projects\mfcc_cnn\test\conNet_with_shortCut.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.new_identification">
     <configuration name="iden_train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="mfcc_cnn" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -145,6 +123,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="mod" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="mfcc_cnn" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/mod.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="mfcc_cnn" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -153,7 +153,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -167,7 +167,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tools" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="new_identification" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="mfcc_cnn" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -175,12 +175,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/tools.py" />
+      <option name="SCRIPT_NAME" value="D:\Python_projects\mfcc_cnn\src\new_identification.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -193,16 +193,16 @@
       <item itemvalue="Python.iden_train" />
       <item itemvalue="Python.model" />
       <item itemvalue="Python.identification" />
-      <item itemvalue="Python.tools" />
-      <item itemvalue="Python.conNet_with_shortCut" />
+      <item itemvalue="Python.mod" />
+      <item itemvalue="Python.new_identification" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.model" />
+        <item itemvalue="Python.new_identification" />
         <item itemvalue="Python.identification" />
         <item itemvalue="Python.iden_train" />
-        <item itemvalue="Python.conNet_with_shortCut" />
-        <item itemvalue="Python.tools" />
+        <item itemvalue="Python.model" />
+        <item itemvalue="Python.mod" />
       </list>
     </recent_temporary>
   </component>
@@ -281,7 +281,35 @@
       <workItem from="1582333620154" duration="67186000" />
       <workItem from="1582556173024" duration="291000" />
       <workItem from="1582591343781" duration="18700000" />
-      <workItem from="1582673124841" duration="20437000" />
+      <workItem from="1582673124841" duration="24872000" />
+      <workItem from="1582761704749" duration="21371000" />
+      <workItem from="1582852919082" duration="193000" />
+      <workItem from="1582853144060" duration="1819000" />
+      <workItem from="1582883477005" duration="855000" />
+      <workItem from="1582884350409" duration="227000" />
+      <workItem from="1582885071841" duration="604000" />
+      <workItem from="1582889464480" duration="341000" />
+      <workItem from="1582896947823" duration="677000" />
+      <workItem from="1582943084844" duration="2841000" />
+      <workItem from="1582958070711" duration="8196000" />
+      <workItem from="1583022030491" duration="13243000" />
+      <workItem from="1583111262192" duration="7519000" />
+      <workItem from="1583198665641" duration="8911000" />
+      <workItem from="1583283263577" duration="745000" />
+      <workItem from="1583391779494" duration="2510000" />
+      <workItem from="1583416128343" duration="1720000" />
+      <workItem from="1583456302275" duration="20484000" />
+      <workItem from="1583543225628" duration="18791000" />
+      <workItem from="1583632429707" duration="5597000" />
+      <workItem from="1583717005685" duration="7417000" />
+      <workItem from="1583802904800" duration="6425000" />
+      <workItem from="1583889897992" duration="8441000" />
+      <workItem from="1583971951583" duration="12389000" />
+      <workItem from="1584059561199" duration="17541000" />
+      <workItem from="1584150517678" duration="562000" />
+      <workItem from="1584175497238" duration="99000" />
+      <workItem from="1584180372498" duration="1976000" />
+      <workItem from="1584188544132" duration="2523000" />
     </task>
     <task id="LOCAL-00001" summary="2/11">
       <created>1581422668012</created>
@@ -297,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582643522033</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="2/26">
+      <created>1582717754658</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1582717754658</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,48 +341,49 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="2/11" />
     <MESSAGE value="train on 128 class" />
-    <option name="LAST_COMMIT_MESSAGE" value="train on 128 class" />
+    <MESSAGE value="2/26" />
+    <option name="LAST_COMMIT_MESSAGE" value="2/26" />
   </component>
   <component name="WindowStateProjectService">
     <state x="423" y="111" key="#Notifications" timestamp="1581734330156">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
     <state x="423" y="111" key="#Notifications/63.0.1537.900@63.0.1537.900" timestamp="1581734330156" />
-    <state x="295" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582675317405">
+    <state x="295" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584188790034">
       <screen x="75" y="0" width="1525" height="900" />
     </state>
     <state x="285" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog/63.0.1537.900@63.0.1537.900" timestamp="1579074261732" />
-    <state x="295" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog/75.0.1525.900@75.0.1525.900" timestamp="1582675317405" />
-    <state x="453" y="47" key="CommitChangelistDialog2" timestamp="1582643518216">
+    <state x="295" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog/75.0.1525.900@75.0.1525.900" timestamp="1584188790034" />
+    <state x="453" y="47" key="CommitChangelistDialog2" timestamp="1582717750746">
       <screen x="75" y="0" width="1525" height="900" />
     </state>
     <state x="444" y="47" key="CommitChangelistDialog2/63.0.1537.900@63.0.1537.900" timestamp="1581422665004" />
-    <state x="453" y="47" key="CommitChangelistDialog2/75.0.1525.900@75.0.1525.900" timestamp="1582643518216" />
-    <state x="529" y="146" key="FileChooserDialogImpl" timestamp="1582598088470">
+    <state x="453" y="47" key="CommitChangelistDialog2/75.0.1525.900@75.0.1525.900" timestamp="1582717750746" />
+    <state x="529" y="146" key="FileChooserDialogImpl" timestamp="1583550668660">
       <screen x="75" y="0" width="1525" height="900" />
     </state>
     <state x="313" y="199" key="FileChooserDialogImpl/63.0.1537.900@63.0.1537.900" timestamp="1581822286270" />
-    <state x="529" y="146" key="FileChooserDialogImpl/75.0.1525.900@75.0.1525.900" timestamp="1582598088470" />
-    <state width="1482" height="742" key="GridCell.Tab.0.bottom" timestamp="1582717702949">
+    <state x="529" y="146" key="FileChooserDialogImpl/75.0.1525.900@75.0.1525.900" timestamp="1583550668660" />
+    <state width="1482" height="742" key="GridCell.Tab.0.bottom" timestamp="1584191472389">
       <screen x="75" y="0" width="1525" height="900" />
     </state>
     <state width="1494" height="742" key="GridCell.Tab.0.bottom/63.0.1537.900@63.0.1537.900" timestamp="1582107405389" />
-    <state width="1482" height="742" key="GridCell.Tab.0.bottom/75.0.1525.900@75.0.1525.900" timestamp="1582717702949" />
-    <state width="1482" height="742" key="GridCell.Tab.0.center" timestamp="1582717702949">
+    <state width="1482" height="742" key="GridCell.Tab.0.bottom/75.0.1525.900@75.0.1525.900" timestamp="1584191472389" />
+    <state width="1482" height="742" key="GridCell.Tab.0.center" timestamp="1584191472388">
       <screen x="75" y="0" width="1525" height="900" />
     </state>
     <state width="1494" height="742" key="GridCell.Tab.0.center/63.0.1537.900@63.0.1537.900" timestamp="1582107405389" />
-    <state width="1482" height="742" key="GridCell.Tab.0.center/75.0.1525.900@75.0.1525.900" timestamp="1582717702949" />
-    <state width="1482" height="742" key="GridCell.Tab.0.left" timestamp="1582717702949">
+    <state width="1482" height="742" key="GridCell.Tab.0.center/75.0.1525.900@75.0.1525.900" timestamp="1584191472388" />
+    <state width="1482" height="742" key="GridCell.Tab.0.left" timestamp="1584191472388">
       <screen x="75" y="0" width="1525" height="900" />
     </state>
     <state width="1494" height="742" key="GridCell.Tab.0.left/63.0.1537.900@63.0.1537.900" timestamp="1582107405388" />
-    <state width="1482" height="742" key="GridCell.Tab.0.left/75.0.1525.900@75.0.1525.900" timestamp="1582717702949" />
-    <state width="1482" height="742" key="GridCell.Tab.0.right" timestamp="1582717702949">
+    <state width="1482" height="742" key="GridCell.Tab.0.left/75.0.1525.900@75.0.1525.900" timestamp="1584191472388" />
+    <state width="1482" height="742" key="GridCell.Tab.0.right" timestamp="1584191472389">
       <screen x="75" y="0" width="1525" height="900" />
     </state>
     <state width="1494" height="742" key="GridCell.Tab.0.right/63.0.1537.900@63.0.1537.900" timestamp="1582107405389" />
-    <state width="1482" height="742" key="GridCell.Tab.0.right/75.0.1525.900@75.0.1525.900" timestamp="1582717702949" />
+    <state width="1482" height="742" key="GridCell.Tab.0.right/75.0.1525.900@75.0.1525.900" timestamp="1584191472389" />
     <state width="1494" height="292" key="GridCell.Tab.1.bottom" timestamp="1580569167270">
       <screen x="63" y="0" width="1537" height="900" />
     </state>
@@ -368,29 +404,32 @@
       <screen x="63" y="0" width="1537" height="900" />
     </state>
     <state x="334" y="95" key="SettingsEditor/63.0.1537.900@63.0.1537.900" timestamp="1579010774820" />
-    <state x="432" y="185" key="Vcs.Push.Dialog.v2" timestamp="1582643538734">
+    <state x="432" y="185" key="Vcs.Push.Dialog.v2" timestamp="1582717767995">
       <screen x="75" y="0" width="1525" height="900" />
     </state>
     <state x="423" y="185" key="Vcs.Push.Dialog.v2/63.0.1537.900@63.0.1537.900" timestamp="1581422684569" />
-    <state x="432" y="185" key="Vcs.Push.Dialog.v2/75.0.1525.900@75.0.1525.900" timestamp="1582643538734" />
-    <state x="532" y="277" key="com.intellij.ide.util.TipDialog" timestamp="1582674389316">
+    <state x="432" y="185" key="Vcs.Push.Dialog.v2/75.0.1525.900@75.0.1525.900" timestamp="1582717767995" />
+    <state x="532" y="277" key="com.intellij.ide.util.TipDialog" timestamp="1584151041847">
       <screen x="75" y="0" width="1525" height="900" />
     </state>
     <state x="524" y="277" key="com.intellij.ide.util.TipDialog/63.0.1537.900@63.0.1537.900" timestamp="1582075328869" />
-    <state x="532" y="277" key="com.intellij.ide.util.TipDialog/75.0.1525.900@75.0.1525.900" timestamp="1582674389316" />
-    <state x="561" y="367" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1582715406745">
+    <state x="532" y="277" key="com.intellij.ide.util.TipDialog/75.0.1525.900@75.0.1525.900" timestamp="1584151041847" />
+    <state x="561" y="367" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1584092534621">
       <screen x="75" y="0" width="1525" height="900" />
     </state>
     <state x="553" y="367" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/63.0.1537.900@63.0.1537.900" timestamp="1582091608144" />
-    <state x="561" y="367" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/75.0.1525.900@75.0.1525.900" timestamp="1582715406745" />
+    <state x="561" y="367" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/75.0.1525.900@75.0.1525.900" timestamp="1584092534621" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/mfcc_cnn$conNet_with_InceptionModule.coverage" NAME="conNet_with_InceptionModule Coverage Results" MODIFIED="1582450591578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/mfcc_cnn$tools.coverage" NAME="tools Coverage Results" MODIFIED="1582188228943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/mfcc_cnn$identification.coverage" NAME="identification Coverage Results" MODIFIED="1582716570405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
+    <SUITE FILE_PATH="coverage/mfcc_cnn$new_iden.coverage" NAME="new_iden Coverage Results" MODIFIED="1584181410569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
+    <SUITE FILE_PATH="coverage/mfcc_cnn$identification.coverage" NAME="identification Coverage Results" MODIFIED="1584093289635" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
     <SUITE FILE_PATH="coverage/mfcc_cnn$old_models.coverage" NAME="old_models Coverage Results" MODIFIED="1579678830339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/mfcc_cnn$model.coverage" NAME="model Coverage Results" MODIFIED="1582717634541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/mfcc_cnn$mod.coverage" NAME="mod Coverage Results" MODIFIED="1583466629037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/mfcc_cnn$new_identification.coverage" NAME="new_identification Coverage Results" MODIFIED="1584189141325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
+    <SUITE FILE_PATH="coverage/mfcc_cnn$model.coverage" NAME="model Coverage Results" MODIFIED="1583903605075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
     <SUITE FILE_PATH="coverage/mfcc_cnn$test.coverage" NAME="test Coverage Results" MODIFIED="1580019537836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/mfcc_cnn$iden_train.coverage" NAME="iden_train Coverage Results" MODIFIED="1582712542609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
+    <SUITE FILE_PATH="coverage/mfcc_cnn$iden_train.coverage" NAME="iden_train Coverage Results" MODIFIED="1584059930733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
   </component>
 </project>

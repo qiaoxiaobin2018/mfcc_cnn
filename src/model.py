@@ -13,10 +13,6 @@ from keras.layers import BatchNormalization, Flatten, Dense, Reshape
 from keras.layers import MaxPooling2D, AveragePooling2D, GlobalAveragePooling2D
 
 
-def trans(x):
-    return tf.transpose(x, perm=[0, 2, 1])
-
-
 '''
 自定义卷积神经网络
 输出形状的改变涉及：_gene_Data、identification(v = np.squeeze(v))
@@ -50,7 +46,7 @@ def conNet(input_shape,weight_decay,pool):
     # ===============================================
     #            Convolution Block 2
     # ===============================================
-    x2 = Conv2D(128, (3,3),
+    x2 = Conv2D(96, (3,3),
                 kernel_initializer='orthogonal',
                 use_bias=False, trainable=True,
                 kernel_regularizer=l2(weight_decay),
@@ -65,19 +61,27 @@ def conNet(input_shape,weight_decay,pool):
     # ===============================================
     #            Convolution Block 4
     # ===============================================
-    x3 = Conv2D(196, (3, 3),
+    x3 = Conv2D(192, (3, 3),
                 kernel_initializer='orthogonal',
                 use_bias=False, trainable=True,
                 kernel_regularizer=l2(weight_decay),
                 padding='same',
                 name='conv3_1')(x2)
-    x3 = Conv2D(256, (3, 3),
+    x3 = Conv2D(384, (3, 3),
                 kernel_initializer='orthogonal',
                 use_bias=False, trainable=True,
                 kernel_regularizer=l2(weight_decay),
                 padding='same',
                 strides=(2, 1),
                 name='conv3_2')(x3)
+    # shortcut = Conv2D(256, (1, 1),
+    #                   strides=(2, 1),
+    #                   kernel_initializer='orthogonal',
+    #                   use_bias=False,
+    #                   trainable=True,
+    #                   kernel_regularizer=l2(weight_decay),
+    #                   name="shortcut")(x2)
+    # x3 = layers.add([x3, shortcut])
     x3 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn3', trainable=True)(x3, training=False)
     x3 = Activation('relu', name='relu3')(x3)
     if pool == "max":
@@ -88,18 +92,19 @@ def conNet(input_shape,weight_decay,pool):
     #            GlobalAveragePooling
     # ===============================================
     a1 = GlobalAveragePooling2D(name='avg_pool')(x3)
-    # a2 = Reshape((1, 1, 128), name='reshape')(a1)
     # ===============================================
     #            Dense layer
     # ===============================================
-    dense1 = Dense(256, activation='relu',
+    dense1 = Dense(384, activation='relu',
                kernel_initializer='orthogonal',
                use_bias=True, trainable=True,
                kernel_regularizer=l2(weight_decay),
                bias_regularizer=l2(weight_decay),
                name='fc1')(a1)
-    # dense1 = BatchNormalization(axis=-1, epsilon=1e-5, momentum=1, name='fc1_bn', trainable=True)(dense1, training=False)
-    # dense1 = Activation('relu', name='fc1_relu')(dense1)
+    # ===============================================
+    #            Dropout layer
+    # ===============================================
+    # dropout = Dropout(0.2)(dense1)
     # ===============================================
     #            Softmax layer
     # ===============================================
@@ -124,7 +129,7 @@ def test_for_cnn():
     model = conNet(input_shape,c.WEIGHT_DECAY,c.POOL)
 
     print(model.summary()) # 5,237,536  16,760,192
-    time.sleep(300000)
+    exit(0)
 
     x = np.random.randn(1, 13,300,3)
     v = model.predict(x)

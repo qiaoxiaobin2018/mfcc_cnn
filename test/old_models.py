@@ -16,6 +16,292 @@ from keras.layers import MaxPooling2D, AveragePooling2D, GlobalAveragePooling2D
 '''
 
 
+def conNet_85_for_64(input_shape,weight_decay,pool):
+    '''
+    train: 0 ~ 30  0.001
+           35 ~ 85  0.0001
+           90 ~ 115  0.00006(2)
+    '''
+    # ===============================================
+    #            input layer
+    # ===============================================
+    inputs = Input(input_shape, name='input')
+    # ===============================================
+    #            Convolution Block 1
+    # ===============================================
+    x1 = Conv2D(32,(3,3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                name='conv1')(inputs)
+    x1 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn1', trainable=True)(x1, training=False)
+    x1 = Activation('relu', name='relu1')(x1)
+    if pool == "max":
+        x1 = MaxPooling2D((2,2), strides=(2,2), padding="same", name="mpool1")(x1)
+    elif pool == "avg":
+        x1 = AveragePooling2D((2, 2), strides=(2, 2), padding="same", name="avgpool1")(x1)
+    # ===============================================
+    #            Convolution Block 2
+    # ===============================================
+    x2 = Conv2D(96, (3,3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                name='conv2')(x1)
+    x2 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn2', trainable=True)(x2, training=False)
+    x2 = Activation('relu', name='relu2')(x2)
+    if pool == "max":
+        x2 = MaxPooling2D((2,2), strides=(2,2), padding="same", name="mpool2")(x2)
+    elif pool == "avg":
+        x2 = AveragePooling2D((2,2), strides=(2,2), padding="same", name="avgpool2")(x2)
+    # ===============================================
+    #            Convolution Block 4
+    # ===============================================
+    x3 = Conv2D(192, (3, 3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                name='conv3_1')(x2)
+    x3 = Conv2D(256, (3, 3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                strides=(2, 1),
+                name='conv3_2')(x3)
+    # x3 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn3', trainable=True)(x3, training=False)
+    shortcut = Conv2D(256, (1, 1),
+                      strides=(2, 1),
+                      kernel_initializer='orthogonal',
+                      use_bias=False,
+                      trainable=True,
+                      kernel_regularizer=l2(weight_decay),
+                      name="shortcut")(x2)
+    # shortcut = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn3_shortcut', trainable=True)(shortcut, training=False)
+    x3 = layers.add([x3, shortcut])
+    x3 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn3', trainable=True)(x3, training=False)
+    x3 = Activation('relu', name='relu3')(x3)
+    if pool == "max":
+        x3 = MaxPooling2D((2,2), strides=(2,2), padding="same", name="mpool3")(x3)
+    elif pool == "avg":
+        x3 = AveragePooling2D((2,2), strides=(2,2), padding="same", name="avgpool3")(x3)
+    # ===============================================
+    #            GlobalAveragePooling
+    # ===============================================
+    a1 = GlobalAveragePooling2D(name='avg_pool')(x3)
+    # a2 = Reshape((1, 1, 128), name='reshape')(a1)
+    # ===============================================
+    #            Dense layer
+    # ===============================================
+    dense1 = Dense(256, activation='relu',
+               kernel_initializer='orthogonal',
+               use_bias=True, trainable=True,
+               kernel_regularizer=l2(weight_decay),
+               bias_regularizer=l2(weight_decay),
+               name='fc1')(a1)
+    # dense1 = BatchNormalization(axis=-1, epsilon=1e-5, momentum=1, name='fc1_bn', trainable=True)(dense1, training=False)
+    # dense1 = Activation('relu', name='fc1_relu')(dense1)
+    # ===============================================
+    #            Softmax layer
+    # ===============================================
+    s1 = Dense(c.N_CLASS, activation='softmax',
+               kernel_initializer='orthogonal',
+               use_bias=False, trainable=True,
+               kernel_regularizer=l2(weight_decay),
+               bias_regularizer=l2(weight_decay),
+               name='prediction')(dense1)
+
+    m = Model(inputs, s1, name='conNet')
+    return m
+
+
+def conNet_to_be_continued(input_shape,weight_decay,pool):
+    '''
+    train: 0 ~ 30  0.001
+           35 ~ 85  0.0001
+           90 ~ 115  0.00006(2)
+    '''
+    # ===============================================
+    #            input layer
+    # ===============================================
+    inputs = Input(input_shape, name='input')
+    # ===============================================
+    #            Convolution Block 1
+    # ===============================================
+    x1 = Conv2D(64,(3,3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                name='conv1')(inputs)
+    x1 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn1', trainable=True)(x1, training=False)
+    x1 = Activation('relu', name='relu1')(x1)
+    if pool == "max":
+        x1 = MaxPooling2D((2,2), strides=(2,2), padding="same", name="mpool1")(x1)
+    elif pool == "avg":
+        x1 = AveragePooling2D((2, 2), strides=(2, 2), padding="same", name="avgpool1")(x1)
+    # ===============================================
+    #            Convolution Block 2
+    # ===============================================
+    x2 = Conv2D(192, (3,3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                name='conv2')(x1)
+    x2 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn2', trainable=True)(x2, training=False)
+    x2 = Activation('relu', name='relu2')(x2)
+    if pool == "max":
+        x2 = MaxPooling2D((2,2), strides=(2,2), padding="same", name="mpool2")(x2)
+    elif pool == "avg":
+        x2 = AveragePooling2D((2,2), strides=(2,2), padding="same", name="avgpool2")(x2)
+    # ===============================================
+    #            Convolution Block 4
+    # ===============================================
+    x3 = Conv2D(384, (3, 3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                name='conv3_1')(x2)
+    x3 = Conv2D(512, (3, 3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                strides=(2, 1),
+                name='conv3_2')(x3)
+    x3 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn3', trainable=True)(x3, training=False)
+    x3 = Activation('relu', name='relu3')(x3)
+    if pool == "max":
+        x3 = MaxPooling2D((2,2), strides=(2,2), padding="same", name="mpool3")(x3)
+    elif pool == "avg":
+        x3 = AveragePooling2D((2,2), strides=(2,2), padding="same", name="avgpool3")(x3)
+    # ===============================================
+    #            GlobalAveragePooling
+    # ===============================================
+    a1 = GlobalAveragePooling2D(name='avg_pool')(x3)
+    # a2 = Reshape((1, 1, 128), name='reshape')(a1)
+    # ===============================================
+    #            Dense layer
+    # ===============================================
+    dense1 = Dense(512, activation='relu',
+               kernel_initializer='orthogonal',
+               use_bias=True, trainable=True,
+               kernel_regularizer=l2(weight_decay),
+               bias_regularizer=l2(weight_decay),
+               name='fc1')(a1)
+    # dense1 = BatchNormalization(axis=-1, epsilon=1e-5, momentum=1, name='fc1_bn', trainable=True)(dense1, training=False)
+    # dense1 = Activation('relu', name='fc1_relu')(dense1)
+    # ===============================================
+    #            Softmax layer
+    # ===============================================
+    s1 = Dense(c.N_CLASS, activation='softmax',
+               kernel_initializer='orthogonal',
+               use_bias=False, trainable=True,
+               kernel_regularizer=l2(weight_decay),
+               bias_regularizer=l2(weight_decay),
+               name='prediction')(dense1)
+
+    m = Model(inputs, s1, name='conNet')
+    return m
+
+
+def conNet_79_for_128(input_shape,weight_decay,pool):
+    '''
+    train: 0 ~ 30  0.001
+           35 ~ 85  0.0001
+           90 ~ 115  0.00006(2)
+    '''
+    # ===============================================
+    #            input layer
+    # ===============================================
+    inputs = Input(input_shape, name='input')
+    # ===============================================
+    #            Convolution Block 1
+    # ===============================================
+    x1 = Conv2D(32,(3,3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                name='conv1')(inputs)
+    x1 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn1', trainable=True)(x1, training=False)
+    x1 = Activation('relu', name='relu1')(x1)
+    if pool == "max":
+        x1 = MaxPooling2D((2,2), strides=(2,2), padding="same", name="mpool1")(x1)
+    elif pool == "avg":
+        x1 = AveragePooling2D((2, 2), strides=(2, 2), padding="same", name="avgpool1")(x1)
+    # ===============================================
+    #            Convolution Block 2
+    # ===============================================
+    x2 = Conv2D(96, (3,3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                name='conv2')(x1)
+    x2 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn2', trainable=True)(x2, training=False)
+    x2 = Activation('relu', name='relu2')(x2)
+    if pool == "max":
+        x2 = MaxPooling2D((2,2), strides=(2,2), padding="same", name="mpool2")(x2)
+    elif pool == "avg":
+        x2 = AveragePooling2D((2,2), strides=(2,2), padding="same", name="avgpool2")(x2)
+    # ===============================================
+    #            Convolution Block 4
+    # ===============================================
+    x3 = Conv2D(192, (3, 3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                name='conv3_1')(x2)
+    x3 = Conv2D(256, (3, 3),
+                kernel_initializer='orthogonal',
+                use_bias=False, trainable=True,
+                kernel_regularizer=l2(weight_decay),
+                padding='same',
+                strides=(2, 1),
+                name='conv3_2')(x3)
+    x3 = BatchNormalization(axis=3, epsilon=1e-5, momentum=1, name='bn3', trainable=True)(x3, training=False)
+    x3 = Activation('relu', name='relu3')(x3)
+    if pool == "max":
+        x3 = MaxPooling2D((2,2), strides=(2,2), padding="same", name="mpool3")(x3)
+    elif pool == "avg":
+        x3 = AveragePooling2D((2,2), strides=(2,2), padding="same", name="avgpool3")(x3)
+    # ===============================================
+    #            GlobalAveragePooling
+    # ===============================================
+    a1 = GlobalAveragePooling2D(name='avg_pool')(x3)
+    # a2 = Reshape((1, 1, 128), name='reshape')(a1)
+    # ===============================================
+    #            Dense layer
+    # ===============================================
+    dense1 = Dense(256, activation='relu',
+               kernel_initializer='orthogonal',
+               use_bias=True, trainable=True,
+               kernel_regularizer=l2(weight_decay),
+               bias_regularizer=l2(weight_decay),
+               name='fc1')(a1)
+    # dense1 = BatchNormalization(axis=-1, epsilon=1e-5, momentum=1, name='fc1_bn', trainable=True)(dense1, training=False)
+    # dense1 = Activation('relu', name='fc1_relu')(dense1)
+    # ===============================================
+    #            Softmax layer
+    # ===============================================
+    s1 = Dense(c.N_CLASS, activation='softmax',
+               kernel_initializer='orthogonal',
+               use_bias=False, trainable=True,
+               kernel_regularizer=l2(weight_decay),
+               bias_regularizer=l2(weight_decay),
+               name='prediction')(dense1)
+
+    m = Model(inputs, s1, name='conNet')
+    return m
+
+
 def conNet_70_shortCut(input_shape,weight_decay,pool):
     '''
     train: 0 ~ 30  0.001
