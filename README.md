@@ -22,7 +22,7 @@ mfcc_cnn
 
 ### 测试：
 		* MODE --> "test"
-		* SET test model in IDEN_MODEL_LOAD_PATH
+		* SET test model father path in IDEN_MODEL_LOAD_PATH
 		* RUN identification.py
 
 ### 从已有模型继续训练：
