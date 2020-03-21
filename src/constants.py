@@ -32,10 +32,10 @@ model compile setting
 '''
 
 
-CONTINUE_TRAINING = 1
+CONTINUE_TRAINING = 0
 SAVE = 1
-LR = 0.0001
-EPOCHS = 30
+LR = 0.001
+EPOCHS = 20
 BATCH_SIZE = 32
 N_CLASS = 64
 

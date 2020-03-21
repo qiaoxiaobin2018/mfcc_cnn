@@ -124,7 +124,7 @@ def feature_compare_result(test_list,enroll_list,iden_model_load_path,enroll_fil
 
 
 if __name__ == '__main__':
-	voice_length = 9 # 6 9
+	voice_length = 3 # 6 9
 	iden_model_load_path = "F:/models/iden/m_128/" # iden_model_128_22_0.666_0.991_conNet_add20.h5
 	test_list = "D:/Python_projects/mfcc_cnn/a_iden/test_64.csv"
 	if voice_length == 3:
