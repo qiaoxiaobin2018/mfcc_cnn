@@ -59,7 +59,7 @@ def conNet(input_shape,weight_decay,pool):
     elif pool == "avg":
         x2 = AveragePooling2D((2,2), strides=(2,2), padding="same", name="avgpool2")(x2)
     # ===============================================
-    #            Convolution Block 4
+    #            Convolution Block 3
     # ===============================================
     x3 = Conv2D(192, (3, 3),
                 kernel_initializer='orthogonal',
@@ -67,12 +67,12 @@ def conNet(input_shape,weight_decay,pool):
                 kernel_regularizer=l2(weight_decay),
                 padding='same',
                 name='conv3_1')(x2)
-    x3 = Conv2D(384, (3, 3),
+    x3 = Conv2D(256, (3, 3),
                 kernel_initializer='orthogonal',
                 use_bias=False, trainable=True,
                 kernel_regularizer=l2(weight_decay),
                 padding='same',
-                strides=(2, 1),
+                strides=(2,1),
                 name='conv3_2')(x3)
     # shortcut = Conv2D(256, (1, 1),
     #                   strides=(2, 1),
@@ -95,27 +95,34 @@ def conNet(input_shape,weight_decay,pool):
     # ===============================================
     #            Dense layer
     # ===============================================
-    dense1 = Dense(384, activation='relu',
+    dense1 = Dense(256, activation='relu',
                kernel_initializer='orthogonal',
                use_bias=True, trainable=True,
                kernel_regularizer=l2(weight_decay),
                bias_regularizer=l2(weight_decay),
                name='fc1')(a1)
     # ===============================================
-    #            Dropout layer
-    # ===============================================
-    # dropout = Dropout(0.2)(dense1)
-    # ===============================================
     #            Softmax layer
     # ===============================================
-    s1 = Dense(c.N_CLASS, activation='softmax',
-               kernel_initializer='orthogonal',
-               use_bias=False, trainable=True,
-               kernel_regularizer=l2(weight_decay),
-               bias_regularizer=l2(weight_decay),
-               name='prediction')(dense1)
+    # s1 = Dense(c.N_CLASS, activation='softmax',
+    #            kernel_initializer='orthogonal',
+    #            use_bias=False, trainable=True,
+    #            kernel_regularizer=l2(weight_decay),
+    #            bias_regularizer=l2(weight_decay),
+    #            name='prediction')(dense1)
+    # ===============================================
+    #            AM-Softmax layer
+    # ===============================================
+    x_l2 = keras.layers.Lambda(lambda x: K.l2_normalize(x, 1))(dense1)
+    ams1 = Dense(c.N_CLASS,
+            kernel_initializer='orthogonal',
+            use_bias=False, trainable=True,
+            kernel_constraint=keras.constraints.unit_norm(),
+            kernel_regularizer=keras.regularizers.l2(weight_decay),
+            bias_regularizer=keras.regularizers.l2(weight_decay),
+            name='prediction')(x_l2)
 
-    m = Model(inputs, s1, name='conNet')
+    m = Model(inputs, ams1, name='conNet')
     return m
 
 

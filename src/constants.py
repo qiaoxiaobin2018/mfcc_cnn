@@ -35,16 +35,16 @@ model compile setting
 CONTINUE_TRAINING = 1
 SAVE = 1
 LR = 0.0001
-EPOCHS = 20
+EPOCHS = 30
 BATCH_SIZE = 32
-N_CLASS = 128
+N_CLASS = 64
 
 '''
 Identification
 '''
 
 
-MODE = "test"  # train or test
+MODE = "train"  # train or test
 
 
 
