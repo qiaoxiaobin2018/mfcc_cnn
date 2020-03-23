@@ -32,12 +32,12 @@ model compile setting
 '''
 
 
-CONTINUE_TRAINING = 0
+CONTINUE_TRAINING = 1
 SAVE = 1
-LR = 0.001
-EPOCHS = 20
+LR = 0.00001
+EPOCHS = 30
 BATCH_SIZE = 32
-N_CLASS = 64
+N_CLASS = 128
 
 '''
 Identification
@@ -49,11 +49,11 @@ MODE = "train"  # train or test
 
 
 # train
-IDEN_TRAIN_LIST_FILE = "a_iden/train_64_mfcc_npy.txt"  # /home/longfuhui/shengwenshibie/mfcc_cnn/a_iden/train_128_mfcc_npy.txt
+IDEN_TRAIN_LIST_FILE = "a_iden/train_128_mfcc_npy.txt"  # /home/longfuhui/shengwenshibie/mfcc_cnn/a_iden/train_128_mfcc_npy.txt
 IDEN_MODEL_FA_PATH = "F:/models/iden/m_128/" # /home/longfhui/models/iden/m_128/
 IDEN_MODEL_PATH = "F:/models/iden/iden_model_test.h5" # /home/longfhui/models/iden/iden_model_test.h5
 
 # test
-IDEN_TEST_FILE = "a_iden/test_64.txt" # /home/longfuhui/shengwenshibie/mfcc_cnn/a_iden/test_128.txt
+IDEN_TEST_FILE = "a_iden/test_128.txt" # /home/longfuhui/shengwenshibie/mfcc_cnn/a_iden/test_128.txt
 IDEN_MODEL_LOAD_PATH = "F:/models/iden/m_128" # /home/longfhui/models/iden/m_128/iden_model_128_20_0.094_1.000_conNet_add40.h5
 

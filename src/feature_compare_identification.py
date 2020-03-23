@@ -124,17 +124,18 @@ def feature_compare_result(test_list,enroll_list,iden_model_load_path,enroll_fil
 
 
 if __name__ == '__main__':
-	voice_length = 3 # 6 9
+	voice_length = 9 # 3 6 9
+	class_num = 128 # 64 128
 	iden_model_load_path = "F:/models/iden/m_128/" # iden_model_128_22_0.666_0.991_conNet_add20.h5
-	test_list = "D:/Python_projects/mfcc_cnn/a_iden/test_64.csv"
+	test_list = "D:/Python_projects/mfcc_cnn/a_iden/test_{}.csv".format(class_num)
 	if voice_length == 3:
-		enroll_list = "D:/Python_projects/mfcc_cnn/a_iden/enroll_64_3s.csv"
+		enroll_list = "D:/Python_projects/mfcc_cnn/a_iden/enroll_{}_3s.csv".format(class_num)
 		enroll_file_fa_path = "F:/vox_data_mfcc_npy/enroll_128_3-5s"
 	elif voice_length == 6:
-		enroll_list = "D:/Python_projects/mfcc_cnn/a_iden/enroll_64_6s.csv"
+		enroll_list = "D:/Python_projects/mfcc_cnn/a_iden/enroll_{}_6s.csv".format(class_num)
 		enroll_file_fa_path = "F:/vox_data_mfcc_npy/enroll_128_6-8s"
 	else:
-		enroll_list = "D:/Python_projects/mfcc_cnn/a_iden/enroll_64_9s.csv"
+		enroll_list = "D:/Python_projects/mfcc_cnn/a_iden/enroll_{}_9s.csv".format(class_num)
 		enroll_file_fa_path = "F:/vox_data_mfcc_npy/enroll_128_9-11s"
 	test_file_fa_path = "F:/vox_data_mfcc_npy/test_128/"
 	result_file = "D:/Python_projects/mfcc_cnn/a_iden/iden_compare_res.csv"

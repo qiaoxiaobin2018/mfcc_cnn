@@ -1,7 +1,7 @@
 import os
 import time
 import numpy as np
-import constants as c
+# import constants as c
 import keras
 import tensorflow as tf
 import keras.backend as K
@@ -157,23 +157,42 @@ def get_siamese_model(model_load_path):
 
 if __name__ == '__main__':
     # 常量
-    train_fa_dir = "F:/vox_data_mfcc_npy/train_veri_128/"
-    train_list = "D:/Python_projects/fbank_cnn/a_veri/train_128_pairs_for_veri.txt"
+    # ================windows===================
+    # train_fa_dir = "F:/vox_data_mfcc_npy/train_128_for_veri/"
+    # train_list = "D:/Python_projects/fbank_cnn/a_veri/train_128_pairs_for_veri.txt"
+    #
+    # ori_model_load_path = "F:/models/veri/load/iden_model_64_0.8737.h5"
+    # con_model_load_path = "F:/models/veri/iden_model_test.h5"
+    # veri_model_save_fa_path = "F:/models/veri/m_128/"
+    # ================linux===================
+    train_fa_dir = "/home/longfuhui/vox_data_mfcc_npy/train_128_for_veri/"
+    train_list = "/home/longfuhui/shengwenshibie/mfcc_cnn/a_veri/train_64_pairs_for_veri.txt"
 
-    model_load_path = "F:/models/iden/m_128/iden_model_64_0.8737.h5"
-    dim = (13,300,3)
-
+    ori_model_load_path = "/home/longfuhui/models/veri/load_model/iden_model_64_0.8496.h5"
+    con_model_load_path = "/home/longfuhui/models/veri/iden_model_test.h5"
+    veri_model_save_fa_path = "/home/longfuhui/models/veri/m_128/"
+    # ==================consts================
+    continue_training = 0
     LR = 0.001
-    EPOCHS = 10
-    BATCH_SIZE = 8
+    EPOCHS = 20
+    period = 5
+    BATCH_SIZE = 64
     N_CLASS = 2
-
+    dim = (13, 300, 3)
+    # ========================================
     # 获取模型
-    model = get_siamese_model(model_load_path)
-    # 编译
-    model.compile(loss=contrastive_loss,
-                  optimizer=optimizers.Adam(lr=LR,beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0),
-                  metrics=[accuracy])
+    if continue_training == 1:
+        print("load model from {}...".format(con_model_load_path))
+        model = load_model(con_model_load_path)
+        print("pre LR: ", K.get_value(model.optimizer.lr))
+        K.set_value(model.optimizer.lr, LR)
+        print("lat LR: ",K.get_value(model.optimizer.lr))
+    else:
+        model = get_siamese_model(ori_model_load_path)
+        # 编译
+        model.compile(loss=contrastive_loss,
+                      optimizer=optimizers.Adam(lr=LR, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0),
+                      metrics=[accuracy])
     # 准备数据
     audiolist1, audiolist2,labellist = get_voxceleb1_datalist(train_fa_dir,train_list)
     train_gene = DataGenerator(audiolist1,audiolist2, labellist, dim, BATCH_SIZE, N_CLASS)
@@ -181,15 +200,26 @@ if __name__ == '__main__':
     print("*****Check params*****\n"
           "learn_rate:{}\n"
           "epochs:{}\n"
+          "period:{}\n"
           "batch_size:{}\n"
           "class_num:{}\n"
           "*****Check params*****"
-        .format(LR, EPOCHS, BATCH_SIZE, N_CLASS))
+        .format(LR, EPOCHS, period,BATCH_SIZE, N_CLASS))
     time.sleep(10)
     print("Start training...")
+    callbacks = [keras.callbacks.ModelCheckpoint(
+        os.path.join(veri_model_save_fa_path, 'iden_model_128_{epoch:02d}_{loss:.3f}_{accuracy:.3f}_conNet.h5'),
+        monitor='loss',
+        mode='min',
+        save_best_only=True,
+        save_weights_only=False,
+        period=period)]
     history = model.fit_generator(train_gene,
                                   epochs=EPOCHS,
-                                  steps_per_epoch=int(len(labellist) // c.BATCH_SIZE),
-                                  # callbacks=callbacks
+                                  steps_per_epoch=int(len(labellist) // BATCH_SIZE),
+                                  callbacks=callbacks
                                   )
+    # 最终保存模型
+    print("save model to {}...".format(con_model_load_path))
+    model.save(con_model_load_path, overwrite=True)
 

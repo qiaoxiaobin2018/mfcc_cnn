@@ -116,12 +116,8 @@ def get_mfcc_1(filepath):
 
     length = mfcc_feat.shape[0]
     reserve_length = length - (length % 100)
-    rstart = int((length - reserve_length) / 2)
 
-    if c.MODE == "train":
-        mfcc_feat = mfcc_feat[0:300, :]
-    elif c.MODE == "test":
-        mfcc_feat = mfcc_feat[0:reserve_length, :]
+    mfcc_feat = mfcc_feat[0:reserve_length, :]
 
     d_mfcc_feat_1 = delta(mfcc_feat, 2)
     d_mfcc_feat_2 = delta(d_mfcc_feat_1, 2)
@@ -180,6 +176,74 @@ def draw_acc_img(history_dict,save_path):
     plt.legend()  # 绘图
     plt.savefig(save_path)
     plt.show()
+
+
+'''
+绘制 ROC 曲线
+'''
+
+def draw_roc(fpr,tpr,auc,model_name):
+    plt.figure()
+    lw = 2
+    plt.plot(fpr, tpr, color='darkorange',
+             lw=lw, label='ROC curve (area = %0.2f)' % auc)
+    plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title("roc_for_{}".format(model_name))
+    plt.legend(loc="lower right")
+    plt.savefig(os.path.join("D:/Python_projects/mfcc_cnn/roc_img","roc_for_{}.png".format(model_name)))
+    plt.show()
+
+
+'''
+绘制 EER 图像
+'''
+
+
+def draw_eer(fpr,tpr,thresholds,eer,thresh,model_name):
+    plt.figure()
+    plt.plot(1 - tpr, thresholds, marker='*', label='far')
+    plt.plot(fpr, thresholds, marker='o', label='fpr\n' + 'eer = %0.2f\n' % eer + 'thresh = %0.2f' % thresh)
+    # lw = 2
+    # plt.plot(lw=lw, label='eer = %0.2f\n' % eer + 'thresh = %0.2f' % thresh)
+    plt.legend()
+    plt.xlim([0, 1])
+    plt.ylim([0, 1.05])
+    plt.xlabel('thresh')
+    plt.ylabel('far/fpr')
+    plt.title("eer_for_{}".format(model_name))
+    plt.savefig(os.path.join("D:/Python_projects/mfcc_cnn/eer_img", "eer_for_{}.png".format(model_name)))
+    plt.show()
+
+
+
+'''
+计算EER
+'''
+
+def calculate_eer(y, y_score,model_name):
+    # y denotes groundtruth scores,
+    # y_score denotes the prediction scores.
+    from scipy.optimize import brentq
+    from sklearn import metrics
+    from sklearn.metrics import roc_curve
+    from scipy.interpolate import interp1d
+
+    model_name = model_name[0:-3]
+
+    fpr, tpr, thresholds = roc_curve(y, y_score, pos_label=1)
+    auc = metrics.auc(fpr, tpr)
+    draw_roc(fpr,tpr,auc,model_name)
+
+    eer = brentq(lambda x : 1. - x - interp1d(fpr, tpr)(x), 0., 1.)
+    thresh = interp1d(fpr, thresholds)(eer)
+    draw_eer(fpr,tpr,thresholds,eer,thresh,model_name)
+    # exit(0)
+
+    return eer
 
 
 '''
