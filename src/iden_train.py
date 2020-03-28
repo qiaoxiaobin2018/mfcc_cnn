@@ -10,7 +10,7 @@ from keras.models import load_model
 from model import conNet
 
 
-def amsoftmax_loss(y_true, y_pred, scale=30, margin=0.35):
+def amsoftmax_loss(y_true, y_pred, scale=c.SCALE, margin=c.MARGIN):
     y_pred = y_true * (y_pred - margin) + (1 - y_true) * y_pred
     y_pred *= scale
     return K.categorical_crossentropy(y_true, y_pred, from_logits=True)
@@ -37,7 +37,7 @@ def train_vggvox_model(model_load_path, model_save_path,continue_training, save_
         model.compile(optimizer=optimizers.Adam(lr=c.LR,beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0),
                       loss=LOSS_AM,  # 使用分类交叉熵作为损失函数
                       metrics=['acc'])  # 使用精度作为指标
-    callbacks = [keras.callbacks.ModelCheckpoint(os.path.join(iden_model_fa_path,'iden_model_128_{epoch:02d}_{loss:.3f}_{acc:.3f}_conNet_add24.h5'),
+    callbacks = [keras.callbacks.ModelCheckpoint(os.path.join(iden_model_fa_path,'iden_model_128_{epoch:02d}_{loss:.3f}_{acc:.3f}_conNet.h5'),
                                                  monitor='loss',
                                                  mode='min',
                                                  save_best_only=True,

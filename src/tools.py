@@ -204,17 +204,19 @@ def draw_roc(fpr,tpr,auc,model_name):
 
 
 def draw_eer(fpr,tpr,thresholds,eer,thresh,model_name):
+
     plt.figure()
-    plt.plot(1 - tpr, thresholds, marker='*', label='far')
-    plt.plot(fpr, thresholds, marker='o', label='fpr\n' + 'eer = %0.2f\n' % eer + 'thresh = %0.2f' % thresh)
+    plt.plot(thresholds,1 - tpr, marker='*', label='far')
+    plt.plot(thresholds,fpr, marker='o', label='fpr\n' + 'eer = %0.2f\n' % eer + 'thresh = %0.2f' % thresh)   # label='fpr\n' + 'eer = %0.2f\n' % eer + 'thresh = %0.2f' % thresh
     # lw = 2
     # plt.plot(lw=lw, label='eer = %0.2f\n' % eer + 'thresh = %0.2f' % thresh)
-    plt.legend()
-    plt.xlim([0, 1])
-    plt.ylim([0, 1.05])
+    # plt.legend()
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
     plt.xlabel('thresh')
     plt.ylabel('far/fpr')
     plt.title("eer_for_{}".format(model_name))
+    plt.legend()
     plt.savefig(os.path.join("D:/Python_projects/mfcc_cnn/eer_img", "eer_for_{}.png".format(model_name)))
     plt.show()
 

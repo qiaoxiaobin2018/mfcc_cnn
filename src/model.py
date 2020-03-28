@@ -13,7 +13,7 @@ from keras.layers import BatchNormalization, Flatten, Dense, Reshape
 from keras.layers import MaxPooling2D, AveragePooling2D, GlobalAveragePooling2D
 
 
-def amsoftmax_loss(y_true, y_pred, scale=30, margin=0.35):
+def amsoftmax_loss(y_true, y_pred, scale=c.SCALE, margin=c.MARGIN):
 	y_pred = y_true * (y_pred - margin) + (1 - y_true) * y_pred
 	y_pred *= scale
 	return K.categorical_crossentropy(y_true, y_pred, from_logits=True)
@@ -52,7 +52,7 @@ def conNet(input_shape,weight_decay,pool):
 	# ===============================================
 	#            Convolution Block 1
 	# ===============================================
-	x1 = Conv2D(48,(3,3),
+	x1 = Conv2D(32,(3,3),
 				kernel_initializer='orthogonal',
 				use_bias=False, trainable=True,
 				kernel_regularizer=l2(weight_decay),
@@ -88,7 +88,7 @@ def conNet(input_shape,weight_decay,pool):
 				kernel_regularizer=l2(weight_decay),
 				padding='same',
 				name='conv3_1')(x2)
-	x3 = Conv2D(384, (3, 3),
+	x3 = Conv2D(256, (3, 3),
 				kernel_initializer='orthogonal',
 				use_bias=False, trainable=True,
 				kernel_regularizer=l2(weight_decay),
@@ -116,7 +116,7 @@ def conNet(input_shape,weight_decay,pool):
 	# ===============================================
 	#            Dense layer
 	# ===============================================
-	dense1 = Dense(256, activation='relu',
+	dense1 = Dense(128, activation='relu',
 			   kernel_initializer='orthogonal',
 			   use_bias=True, trainable=True,
 			   kernel_regularizer=l2(weight_decay),
@@ -134,14 +134,14 @@ def conNet(input_shape,weight_decay,pool):
 	# ===============================================
 	#            AM-Softmax layer
 	# ===============================================
-	x_l2 = keras.layers.Lambda(lambda x: K.l2_normalize(x, 1))(dense1)
+	# x_l2 = keras.layers.Lambda(lambda x: K.l2_normalize(x, 1))(dense1)
 	ams1 = Dense(c.N_CLASS,
 			kernel_initializer='orthogonal',
 			use_bias=False, trainable=True,
 			kernel_constraint=keras.constraints.unit_norm(),
 			kernel_regularizer=keras.regularizers.l2(weight_decay),
 			bias_regularizer=keras.regularizers.l2(weight_decay),
-			name='prediction')(x_l2)
+			name='prediction')(dense1)
 
 	m = Model(inputs, ams1, name='conNet')
 	return m

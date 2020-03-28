@@ -17,13 +17,48 @@ from keras.models import Model
 '''
 
 
+def cos_distance(vects):
+	x, y = vects
+
+	dot1 = K.batch_dot(x, y, axes=1)
+	return (1.0 - (dot1))
+
+
+def cos_dist_output_shape(shapes):
+	shape1, shape2 = shapes
+	return (shape1[0], 1)
+
+
+def contrastive_loss(y_true, y_pred):
+	'''Contrastive loss from Hadsell-et-al.'06
+	http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf
+	'''
+	margin = 1
+	sqaure_pred = K.square(y_pred)
+	margin_square = K.square(K.maximum(margin - y_pred, 0))
+	return K.mean(y_true * sqaure_pred + (1 - y_true) * margin_square)
+
+
+def compute_accuracy(y_true, y_pred): # numpy上的操作
+	'''Compute classification accuracy with a fixed threshold on distances.
+	'''
+	pred = y_pred.ravel() < 0.5
+	return np.mean(pred == y_true)
+
+
+def accuracy(y_true, y_pred): # Tensor上的操作
+	'''Compute classification accuracy with a fixed threshold on distances.
+	'''
+	return K.mean(K.equal(y_true, K.cast(y_pred < 0.5, y_true.dtype)))
+
+
 def test_model(model):
 	num_layers = len(model.layers)  # 0-35
 	x = np.random.randn(1, 13,300,3)
 	outputs = []
 
 	for i in range(num_layers):
-		get_ith_layer_output = K.function([model.layers[0].input, K.learning_phase()],
+		get_ith_layer_output = K.function([model.get_input_at(0), K.learning_phase()],  # get_input_at   layers[2].input
 										  [model.layers[i].output])
 		layer_output = get_ith_layer_output([x, 0])[0]  # output in test mode = 0
 		outputs.append(layer_output)
@@ -52,25 +87,28 @@ def score(testfile,fa_data_dir,iden_model_load_path):
 		print("============================")
 		print("Load model form {}".format(this_model_path))
 		# Load model
-		model = load_model(this_model_path, custom_objects={'amsoftmax_loss': amsoftmax_loss})
-		model.summary()
+		model = load_model(this_model_path)
+		# model.summary()
 		# test_model(model)
-		# time.sleep(5)
-		exit(0)
+		# exit(0)
 
 		# 获取特征输出
-		output = model.layers[15].output
-		output = layers.Lambda(lambda x: K.l2_normalize(x, 1))(output)
-		model = Model(inputs=model.layers[0].input, outputs=output)
+		output = model.get_layer("model_1").get_output_at(0)
+		model = Model(inputs=model.get_layer("model_1").get_input_at(0), outputs=output)
+		model.summary()
+		# exit(0)
+
 		print("Start testing...")
 		total_length = len(unique_list)  # 4715
 		feats, scores, labels = [], [], []
 		for c, ID in enumerate(unique_list):
-			if c % 200 == 0: print('Finish extracting features for {}/{}th wav.'.format(c, total_length))
+			if c % 100 == 0: print('Finish extracting features for {}/{}th wav.'.format(c, total_length))
 			specs = get_mfcc_2(ID)
 			v = model.predict(specs.reshape(1, *specs.shape))
 			feats += [v]
 
+		# print(feats[0].shape)
+		# exit(0)
 		feats = np.array(feats)
 
 		# 计算余弦角度
@@ -81,23 +119,8 @@ def score(testfile,fa_data_dir,iden_model_load_path):
 			v1 = feats[ind1, 0]
 			v2 = feats[ind2, 0]
 
-			# print(feats.shape)
-			# print(v1.shape)
-
-			# print(np.linalg.norm(v1))
-			# print(np.linalg.norm(v2))
-
 			scores += [np.sum(v1 * v2)] # cos(o)
 			labels += [verify_lb[c]]
-
-			# print(scores)
-			# exit(0)
-
-		# print("scores: ",scores)
-		# print("labels: ",labels)
-
-		# if c>0:
-		#     break
 
 		scores = np.array(scores)
 		labels = np.array(labels)
@@ -115,17 +138,10 @@ def score(testfile,fa_data_dir,iden_model_load_path):
 	print("============================")
 
 
-def amsoftmax_loss(y_true, y_pred, scale=c.SCALE, margin=c.MARGIN):
-	y_pred = y_true * (y_pred - margin) + (1 - y_true) * y_pred
-	y_pred *= scale
-	return K.categorical_crossentropy(y_true, y_pred, from_logits=True)
-
-
 if __name__ == '__main__':
-
 	VERI_TEST_FILE = "a_veri/veri_in.txt"
 	FA_DIR = "F:/vox_data_mfcc_npy/test_128/"
-	VERI_MODEL_LOAD_PATH = "F:/models/veri/m_128/"
+	VERI_MODEL_LOAD_PATH = "F:/models/veri/m_128"
 
 
 	score(VERI_TEST_FILE,FA_DIR,VERI_MODEL_LOAD_PATH)
