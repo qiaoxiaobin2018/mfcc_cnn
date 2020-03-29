@@ -17,39 +17,13 @@ from keras.models import Model
 '''
 
 
-def cos_distance(vects):
-	x, y = vects
-
-	dot1 = K.batch_dot(x, y, axes=1)
-	return (1.0 - (dot1))
+def t_loss(x):
+	margin = 0.2
+	return  K.relu(margin + x[0] - x[1])
 
 
-def cos_dist_output_shape(shapes):
-	shape1, shape2 = shapes
-	return (shape1[0], 1)
-
-
-def contrastive_loss(y_true, y_pred):
-	'''Contrastive loss from Hadsell-et-al.'06
-	http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf
-	'''
-	margin = 1
-	sqaure_pred = K.square(y_pred)
-	margin_square = K.square(K.maximum(margin - y_pred, 0))
-	return K.mean(y_true * sqaure_pred + (1 - y_true) * margin_square)
-
-
-def compute_accuracy(y_true, y_pred): # numpy上的操作
-	'''Compute classification accuracy with a fixed threshold on distances.
-	'''
-	pred = y_pred.ravel() < 0.5
-	return np.mean(pred == y_true)
-
-
-def accuracy(y_true, y_pred): # Tensor上的操作
-	'''Compute classification accuracy with a fixed threshold on distances.
-	'''
-	return K.mean(K.equal(y_true, K.cast(y_pred < 0.5, y_true.dtype)))
+def train_loss(y_true, y_pred):
+	return y_pred
 
 
 def test_model(model):
@@ -87,7 +61,7 @@ def score(testfile,fa_data_dir,iden_model_load_path):
 		print("============================")
 		print("Load model form {}".format(this_model_path))
 		# Load model
-		model = load_model(this_model_path)
+		model = load_model(this_model_path,custom_objects={"t_loss":t_loss,"train_loss":train_loss})
 		# model.summary()
 		# test_model(model)
 		# exit(0)
@@ -95,7 +69,7 @@ def score(testfile,fa_data_dir,iden_model_load_path):
 		# 获取特征输出
 		output = model.get_layer("model_1").get_output_at(0)
 		model = Model(inputs=model.get_layer("model_1").get_input_at(0), outputs=output)
-		model.summary()
+		# model.summary()
 		# exit(0)
 
 		print("Start testing...")
