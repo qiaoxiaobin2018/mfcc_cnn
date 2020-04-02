@@ -50,7 +50,8 @@ def iden(testfile,fa_data_dir,iden_model,mode):
         print("Load model form {}".format(this_model_path))
         model = load_model(this_model_path, custom_objects={'amsoftmax_loss': amsoftmax_loss})
 
-        # print(model.summary())
+        print(model.summary())
+        time.sleep(5)
         # exit(0)
 
         print("Start identifying...")
