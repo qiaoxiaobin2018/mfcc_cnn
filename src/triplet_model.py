@@ -175,7 +175,7 @@ if __name__ == '__main__':
 	# ================linux===================
 	# train_fa_dir = "/home/longfuhui/vox_data_mfcc_npy/train_128_for_veri/"  # /export/longfuhui/vox_mfcc_npy/train_128_for_veri
 	# train_list = "/home/longfuhui/shengwenshibie/mfcc_cnn/a_veri/tmp.txt"
-    #
+	#
 	# ori_model_load_path = "/home/longfuhui/models/veri/load_model/iden_model_64_0.8496.h5"
 	# con_model_load_path = "/home/longfuhui/models/veri/iden_model_test.h5"
 	# veri_model_save_fa_path = "/home/longfuhui/models/veri/m_128/"

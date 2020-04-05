@@ -1,3 +1,4 @@
+# coding=utf-8
 import os
 import time
 import numpy as np
@@ -18,7 +19,7 @@ from keras.models import Model
 
 
 def t_loss(x):
-	margin = 1.0
+	margin = 0.5
 	return  K.relu(margin + x[0] - x[1])
 
 
@@ -115,7 +116,7 @@ def score(testfile,fa_data_dir,iden_model_load_path):
 
 
 if __name__ == '__main__':
-	# VERI_TEST_FILE = "a_veri/veri_in_64.txt"
+	# VERI_TEST_FILE = "a_veri/veri_in_128.txt"
 	VERI_TEST_FILE = "a_veri/veri_out.txt"
 	# FA_DIR = "F:/vox_data_mfcc_npy/test_128/"
 	FA_DIR = "F:/vox_data/vox1_dev_wav/wav/"
