@@ -19,7 +19,7 @@ from keras.models import Model
 
 
 def t_loss(x):
-	margin = 0.5
+	margin = 0.2
 	return  K.relu(margin + x[0] - x[1])
 
 

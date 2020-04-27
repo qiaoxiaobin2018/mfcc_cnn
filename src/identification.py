@@ -48,7 +48,7 @@ def iden(testfile,fa_data_dir,iden_model,mode):
         print("============================")
         print(this_model_path)
         print("Load model form {}".format(this_model_path))
-        model = load_model(this_model_path, custom_objects={'amsoftmax_loss': amsoftmax_loss})
+        model = load_model(this_model_path, custom_objects={'tf': tf})
 
         print(model.summary())
         time.sleep(5)

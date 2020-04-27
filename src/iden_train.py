@@ -60,6 +60,7 @@ def train_vggvox_model(model_load_path, model_save_path,continue_training, save_
     tools.draw_acc_img(history.history,c.ACC_PNG)
     print("Done!")
 
+
 '''
 训练
 '''

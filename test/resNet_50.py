@@ -177,14 +177,14 @@ def conNet(input_shape,weight_decay,pool):
     # ===============================================
     #            Convolution Section 5
     # ===============================================
-    x5 = conv_block_2D(x4, 3, [256, 256, 1024], stage=5, block='a', trainable=True)
-    x5 = identity_block_2D(x5, 3, [256, 256, 1024], stage=5, block='b', trainable=True)
-    x5 = identity_block_2D(x5, 3, [256, 256, 1024], stage=5, block='c', trainable=True)
+    x5 = conv_block_2D(x4, 3, [256, 256, 512], stage=5, block='a', trainable=True)
+    x5 = identity_block_2D(x5, 3, [256, 256, 512], stage=5, block='b', trainable=True)
+    x5 = identity_block_2D(x5, 3, [256, 256, 512], stage=5, block='c', trainable=True)
     x5 = MaxPooling2D((2, 2), strides=(2, 2), name='mpool2')(x5)
     # ===============================================
     #            Convolution Section 6
     # ===============================================
-    x_fc = keras.layers.Conv2D(1024, (1, 9),
+    x_fc = keras.layers.Conv2D(512, (1, 9),
                                strides=(1, 1),
                                activation='relu',
                                kernel_initializer='orthogonal',
